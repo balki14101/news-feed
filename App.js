@@ -1,17 +1,22 @@
-import React from 'react'
-import { View, Text, Image } from 'react-native'
+import React from 'react';
+import {View, Text} from 'react-native';
 
-//import dimensions
-import { Height,Width } from './Helper/Dimension'
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
+import Home from './src/Screens/Home';
+import Details from './src/Screens/Details';
+
+const stack = createStackNavigator();
 const App = () => {
   return (
-    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-      <Image source={{ uri: 'http://tarvostar.com/wp-content/uploads/2020/09/comming.png' }}
-        style={{ height: Height/3, width:Width/2,resizeMode:'contain'}}
-        />
-    </View>
-  )
-}
+    <NavigationContainer>
+      <stack.Navigator>
+        <stack.Screen name="Home" component={Home} />
+        <stack.Screen name="Details" component={Details} />
+      </stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-export default App
+export default App;
