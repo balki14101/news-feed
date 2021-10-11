@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-//Import Dimensions
-import {Height, Width} from '../../Helper/Dimensions';
+import moment from 'moment';
 
-const General = props => {
+//Import Categories Styles
+import Styles from './Styles';
+
+function General(props) {
+  // console.log(props);
   const category = props.data;
   const Navigation = useNavigation();
 
@@ -29,25 +32,20 @@ const General = props => {
 
   const renderGeneralData = item => {
     const card = item.item;
+    const date = moment(card.publishedAt).format('Do MMM YY');
     return (
       <TouchableOpacity
-        style={{
-          backgroundColor: '#ffffff',
-          flexDirection: 'row',
-          margin: 8,
-          borderRadius: 10,
-        }}
+        style={Styles.card}
         onPress={() => {
           Navigation.navigate('Details', {item});
         }}>
-        <Image
-          source={{uri: card.urlToImage}}
-          style={{width: Width / 3, height: Height / 6, borderRadius: 8}}
-        />
-        <View>
-          <View style={{backgroundColor: 'red'}}>
-            <Text numberOfLines={2}>{card.title}</Text>
-          </View>
+        <Image source={{uri: card.urlToImage}} style={Styles.image} />
+        <View style={Styles.contentView}>
+          <Text>{card.source.name}</Text>
+          <Text numberOfLines={2} style={Styles.titleText}>
+            {card.title}
+          </Text>
+          <Text style={Styles.dateText}>{date}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -59,6 +57,6 @@ const General = props => {
       renderItem={renderGeneralData}
     />
   );
-};
+}
 
 export default General;

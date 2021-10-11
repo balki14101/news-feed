@@ -6,7 +6,7 @@ import moment from 'moment';
 //Import Categories Styles
 import Styles from './Styles';
 
-const Science = props => {
+const Technology = props => {
   const category = props.data;
   const Navigation = useNavigation();
 
@@ -29,7 +29,7 @@ const Science = props => {
       });
   });
 
-  const renderScienceData = item => {
+  const renderTechnologyData = item => {
     const card = item.item;
     const date = moment(card.publishedAt).format('Do MMM YY');
     return (
@@ -53,9 +53,9 @@ const Science = props => {
     <FlatList
       keyExtractor={item => item.id}
       data={data}
-      renderItem={renderScienceData}
+      renderItem={renderTechnologyData}
     />
   );
 };
 
-export default Science;
+export default Technology;

@@ -11,6 +11,10 @@ import {Height, Width} from './Helper/Dimension';
 import General from './Categories/General';
 import Science from './Categories/Science';
 import Sports from './Categories/Sports';
+import Health from './Categories/Health';
+import Entertainment from './Categories/Entertainment';
+import Technology from './Categories/Technology';
+import Business from './Categories/Business';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -20,24 +24,55 @@ const card = [
   {name: 'third', details: 'this is the third card'},
 ];
 
-const App = () => {
+const Home = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Trending"
         children={() => <General data={'general'} />}
+        options={{title: 'Tre'}}
       />
       <Tab.Screen
         name="Science"
         children={() => {
           return <Science data={'science'} />;
         }}
+        options={{title: 'Sci'}}
       />
       <Tab.Screen
         name="Sports"
         children={() => {
           return <Sports data={'sports'} />;
         }}
+        options={{title: 'Spt'}}
+      />
+      <Tab.Screen
+        name="Health"
+        children={() => {
+          return <Health data={'health'} />;
+        }}
+        options={{title: 'Hea'}}
+      />
+      <Tab.Screen
+        name="Entertainment"
+        children={() => {
+          return <Entertainment data={'entertainment'} />;
+        }}
+        options={{title: 'Ent'}}
+      />
+      <Tab.Screen
+        name="Technology"
+        children={() => {
+          return <Technology data={'technology'} />;
+        }}
+        options={{title: 'Tec'}}
+      />
+      <Tab.Screen
+        name="Business"
+        children={() => {
+          return <Business data={'business'} />;
+        }}
+        options={{title: 'Bus'}}
       />
     </Tab.Navigator>
   );
@@ -51,4 +86,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
 });
-export default App;
+export default Home;
