@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 //Import Dimensions
 import {Height, Width} from '../../Helper/Dimensions';
-import colors from '../../Helper/Colors';
+import COLORS from '../../Helper/Colors';
 import {
   FONT_SIZE_SMALL,
   FONT_SIZE_NORMAL,
@@ -12,7 +12,7 @@ import {
 const Styles = StyleSheet.create({
   card: {
     // flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: COLORS.WHITE,
     flexDirection: 'row',
     margin: 8,
     borderRadius: 10,
@@ -22,6 +22,7 @@ const Styles = StyleSheet.create({
     width: Width / 3,
     height: Height / 7,
     borderRadius: 8,
+    resizeMode: 'contain',
   },
   contentView: {
     // backgroundColor: 'red',
@@ -30,15 +31,19 @@ const Styles = StyleSheet.create({
     width: Width / 1.6,
     justifyContent: 'center',
   },
+  sourceText: {
+    fontSize: FONT_SIZE_SMALL,
+    color: COLORS.GREY,
+  },
   titleText: {
-    fontSize: 20,
+    fontSize: FONT_SIZE_LARGE,
     fontWeight: 'bold',
   },
   dateText: {
     alignSelf: 'flex-end',
     fontSize: FONT_SIZE_SMALL,
     marginTop: 8,
-    color: colors.Grey,
+    color: COLORS.GREY_VARIANT,
   },
 });
 export default Styles;

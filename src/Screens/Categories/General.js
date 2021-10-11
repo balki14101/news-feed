@@ -32,7 +32,8 @@ function General(props) {
 
   const renderGeneralData = item => {
     const card = item.item;
-    const date = moment(card.publishedAt).format('Do MMM YY');
+    const date = moment(card.publishedAt).startOf('hour').fromNow();
+    // .format('Do MMM YY');
     return (
       <TouchableOpacity
         style={Styles.card}
@@ -41,7 +42,7 @@ function General(props) {
         }}>
         <Image source={{uri: card.urlToImage}} style={Styles.image} />
         <View style={Styles.contentView}>
-          <Text>{card.source.name}</Text>
+          <Text style={Styles.sourceText}>{card.source.name}</Text>
           <Text numberOfLines={2} style={Styles.titleText}>
             {card.title}
           </Text>

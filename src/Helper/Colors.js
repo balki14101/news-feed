@@ -1,6 +1,7 @@
 const colors = {
-  White: '#FFFFFF',
-  Black: '#000000',
-  Grey: '#808080',
+  WHITE: '#FFFFFF',
+  BLACK: '#000000',
+  GREY: '#808080',
+  GREY_VARIANT: '#9d9d9d',
 };
 export default colors;

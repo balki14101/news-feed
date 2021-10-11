@@ -8,12 +8,21 @@ import Home from './src/Screens/Home';
 import Details from './src/Screens/Details';
 
 const stack = createStackNavigator();
-const App = () => {
+const App = props => {
+  console.log(props);
   return (
     <NavigationContainer>
       <stack.Navigator>
-        <stack.Screen name="Home" component={Home} />
-        <stack.Screen name="Details" component={Details} />
+        <stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <stack.Screen
+          name="Details"
+          component={Details}
+          options={{headerShown: false}}
+        />
       </stack.Navigator>
     </NavigationContainer>
   );
