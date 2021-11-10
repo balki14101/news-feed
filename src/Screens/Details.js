@@ -2,10 +2,9 @@ import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Height, Width} from '../Helper/Dimensions';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {WebView} from 'react-native-webview';
 
 function Details(props) {
-  console.log(props.route);
+  console.log(props);
   const [favorite, setfavorite] = useState(false);
   const [bookmark, setbookmark] = useState(false);
 
@@ -25,11 +24,20 @@ function Details(props) {
         </View>
         <View style={{marginTop: 8}}>
           <Text>{detailsData.content}</Text>
+        </View>
+        <View style={{marginTop: 8}}>
           <TouchableOpacity
             onPress={() => {
               props.navigation.navigate('SourceView', detailsData.url);
             }}>
-            <Text>{'Click Hear to Continue Reading'}</Text>
+            <Text
+              style={{
+                textDecorationLine: 'underline',
+                color: 'red',
+                fontWeight: 'bold',
+              }}>
+              {'Click Hear to Continue Reading'}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

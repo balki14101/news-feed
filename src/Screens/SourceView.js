@@ -1,14 +1,10 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 
 import WebView from 'react-native-webview';
 
-const SourceView = () => {
-  return (
-    <View>
-      <Text>hgkjl;lghfhj</Text>
-    </View>
-  );
+const SourceView = props => {
+  const uri = props.route.params;
+  return <WebView source={{uri: uri}} />;
 };
 
 export default SourceView;
