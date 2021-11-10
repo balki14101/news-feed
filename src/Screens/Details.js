@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Height, Width} from '../Helper/Dimensions';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import colors from '../Helper/Colors';
 
 function Details(props) {
   console.log(props);
@@ -10,7 +11,7 @@ function Details(props) {
 
   const detailsData = props.route.params.item.item;
   return (
-    <View>
+    <View style={{flex: 1, backgroundColor: colors.WHITE}}>
       <Image
         source={{uri: detailsData.urlToImage}}
         style={{width: Width, height: Height / 3}}

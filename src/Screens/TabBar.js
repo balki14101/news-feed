@@ -75,11 +75,6 @@ const TabBar = () => {
         },
       })}>
       <Tab.Screen
-        name="Trending"
-        children={() => <General data={'general'} />}
-        // options={{title: 'Tre'}}
-      />
-      <Tab.Screen
         name="Science"
         children={() => {
           return <Science data={'science'} />;

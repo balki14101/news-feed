@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import MaterialIcons from 'react-native-vector-icons/FontAwesome';
-
+import colors from '../Helper/Colors';
 const SplashScreen = () => {
   const Navigation = useNavigation();
 
@@ -16,6 +16,7 @@ const SplashScreen = () => {
     <View
       style={{
         flex: 1,
+        backgroundColor: colors.WHITE,
         justifyContent: 'center',
         alignItems: 'center',
       }}>
@@ -24,7 +25,7 @@ const SplashScreen = () => {
           flexDirection: 'row',
           alignItems: 'flex-end',
         }}>
-        <Text style={{fontSize: 60}}>{'News'}</Text>
+        <Text style={{fontSize: 60, fontWeight: 'bold'}}>{'News'}</Text>
         <MaterialIcons
           name="circle"
           color="red"
