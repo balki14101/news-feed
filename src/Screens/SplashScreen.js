@@ -4,13 +4,14 @@ import {useNavigation} from '@react-navigation/native';
 
 import MaterialIcons from 'react-native-vector-icons/FontAwesome';
 import colors from '../Helper/Colors';
+
 const SplashScreen = () => {
   const Navigation = useNavigation();
 
   useEffect(() => {
     setTimeout(() => {
       Navigation.navigate('Home');
-    }, 1000);
+    }, 2000);
   });
   return (
     <View

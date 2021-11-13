@@ -1,10 +1,16 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
 
 import header from '../Assets/logoBold.jpg';
 import {Height, Width} from './Dimensions';
 
+import {useNavigation} from '@react-navigation/native';
+
+import Source from 'react-native-vector-icons/MaterialIcons';
+
 const HeaderTitle = () => {
+  const Navigation = useNavigation();
+
   return (
     <View
       style={{
@@ -24,6 +30,17 @@ const HeaderTitle = () => {
         }}
       />
     </View>
+  );
+};
+
+export const HeaderLeft = () => {
+  const Navigation = useNavigation();
+
+  return (
+    <TouchableOpacity
+      onPress={() => Navigation.navigate('NewsStandStackScreens')}>
+      <Source name="source" color="red" size={24} style={{marginLeft: 10}} />
+    </TouchableOpacity>
   );
 };
 

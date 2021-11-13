@@ -1,21 +1,24 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+// import {useNavigation} from '@react-navigation/native';
 
-import HeaderTitle from './src/Helper/HeaderTitle';
+import HeaderTitle, {HeaderLeft} from './src/Helper/HeaderTitle';
 import SplashScreen from './src/Screens/SplashScreen';
 import Home from './src/Screens/Home';
 import Details from './src/Screens/Details';
 import SourceView from './src/Screens/SourceView';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import NewsStandStackScreens from './src/Screens/NewsStand/NewsStandStackScreens';
 
 import Settings from 'react-native-vector-icons/SimpleLineIcons';
 
 const stack = createStackNavigator();
 const App = props => {
   console.log(props);
+  // const Navigation = useNavigation();
+
   return (
     <NavigationContainer>
       <stack.Navigator>
@@ -30,20 +33,8 @@ const App = props => {
           options={{
             headerTitle: () => <HeaderTitle />,
             headerTitleAlign: 'center',
-            headerTitleStyle: {
-              fontSize: 24,
-            },
 
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => alert('This is a button!')}>
-                <Settings
-                  name="settings"
-                  color="red"
-                  size={24}
-                  style={{marginLeft: 10}}
-                />
-              </TouchableOpacity>
-            ),
+            headerLeft: () => <HeaderLeft />,
           }}
         />
         <stack.Screen
@@ -54,6 +45,11 @@ const App = props => {
         <stack.Screen
           name="SourceView"
           component={SourceView}
+          options={{headerShown: false}}
+        />
+        <stack.Screen
+          name="NewsStandStackScreens"
+          component={NewsStandStackScreens}
           options={{headerShown: false}}
         />
       </stack.Navigator>

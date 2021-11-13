@@ -24,6 +24,7 @@ function Details(props) {
           </Text>
         </View>
         <View style={{marginTop: 8}}>
+          <Text>{detailsData.description}</Text>
           <Text>{detailsData.content}</Text>
         </View>
         <View style={{marginTop: 8}}>
