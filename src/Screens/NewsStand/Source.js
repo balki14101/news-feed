@@ -15,8 +15,9 @@ import {FONT_SIZE_SMALL, FONT_SIZE_LARGE} from '../../Helper/FontSize';
 import {Height, Width} from '../../Helper/Dimensions';
 
 const Source = props => {
-  const newsstand = props.route.params;
-  // console.log('NewsStandPropsssssssssssss', props.navigation);
+  const newsstand = props.route.params.prop;
+  const logo = props.route.params.image;
+  // console.log('NewsStandPropsssssssssssss', props.route.params);
   const [newsStandData, setnewsStandData] = useState('');
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Source = props => {
       .then(response => response.json())
 
       .then(response => {
-        // console.log('NewsStand', response.articles);
+        console.log('NewsStand', response.articles);
 
         setnewsStandData(response.articles);
       })
@@ -35,38 +36,54 @@ const Source = props => {
         console.error(err);
       });
   });
+  console.log(newsStandData);
 
   const renderSourceData = item => {
     const source = item.item;
+    console.log('source', item);
     const date = moment(source.publishedAt).startOf('hour').fromNow();
 
     // console.log(source);
-    return (
-      <View>
-        {/* <Text style={{color: 'black'}}>{source.title}</Text> */}
-        <TouchableOpacity
-          style={Styles.card}
-          onPress={() => {
-            props.navigation.navigate('Details', {item});
-          }}>
-          <Image source={{uri: source.urlToImage}} style={Styles.image} />
-          <View style={Styles.contentView}>
-            <Text style={Styles.sourceText}>{source.source.name}</Text>
-            <Text numberOfLines={2} style={Styles.titleText}>
-              {source.title}
-            </Text>
-            <Text style={Styles.dateText}>{date}</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
+    if (newsStandData && newsStandData.length > 0) {
+      return (
+        <View>
+          {/* <Text style={{color: 'black'}}>{source.title}</Text> */}
+          <TouchableOpacity
+            style={Styles.card}
+            onPress={() => {
+              props.navigation.navigate('Details', {item});
+            }}>
+            <Image source={{uri: source.urlToImage}} style={Styles.image} />
+            <View style={Styles.contentView}>
+              <Text style={Styles.sourceText}>{source.source.name}</Text>
+              <Text numberOfLines={2} style={Styles.titleText}>
+                {source.title}
+              </Text>
+              <Text style={Styles.dateText}>{date}</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      );
+    } else {
+      return (
+        <Text style={{color: 'black', fontSize: FONT_SIZE_LARGE}}>
+          {`${newsstand} is empty`}
+        </Text>
+      );
+    }
   };
 
   return (
-    <View style={{backgroundColor: COLORS.GREY, flex: 1}}>
-      <Text style={{color: 'black', fontSize: FONT_SIZE_LARGE}}>
-        {newsstand}
-      </Text>
+    <View style={{backgroundColor: '#202124', flex: 1, paddingVertical: 8}}>
+      <Image
+        source={{uri: logo}}
+        style={{
+          height: Height / 8,
+          width: Width / 3,
+          alignSelf: 'center',
+          marginVertical: 8,
+        }}
+      />
       <FlatList
         keyExtractor={item => item.id}
         data={newsStandData}

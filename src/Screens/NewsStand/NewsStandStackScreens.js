@@ -8,6 +8,7 @@ import NewsStandList from './List';
 import NewsStandSource from './Source';
 
 import Settings from 'react-native-vector-icons/SimpleLineIcons';
+import colors from '../../Helper/Colors';
 
 const stack = createStackNavigator();
 const NewsStandStackScreens = props => {
@@ -19,7 +20,12 @@ const NewsStandStackScreens = props => {
       <stack.Screen
         name="NewsStandList"
         component={NewsStandList}
-        options={{headerShown: false}}
+        options={{
+          headerShown: true,
+          headerTitleAlign: 'center',
+          headerTintColor: colors.WHITE,
+          headerStyle: {backgroundColor: '#282A36'},
+        }}
       />
       <stack.Screen
         name="NewsStandSource"
